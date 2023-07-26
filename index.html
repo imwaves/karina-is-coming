@@ -1,0 +1,58 @@
+<html>
+<head>
+
+  <title>Karina is coming</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://pbutcher.uk/flipdown/css/flipdown/flipdown.css">
+
+  <script src="https://pbutcher.uk/flipdown/js/flipdown/flipdown.js"></script>
+  <style>
+    * { padding: 0; margin: 0 }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 32px;
+
+      height: 100%;
+
+      font-family: 'Cookie', cursive;
+
+      background: linear-gradient(60deg, rgb(208, 246, 255) 0.1%, rgb(255, 237, 237) 47.9%, rgb(255, 255, 231) 100.2%);
+    }
+    h1 {
+      padding: 4px;
+
+      font-size: 92px;
+
+      background: -webkit-linear-gradient(60deg, rgb(188, 12, 241), rgb(212, 4, 4));
+      background: linear-gradient(60deg, rgb(188, 12, 241), rgb(212, 4, 4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <h1>Karina is coming!</h1>
+  <div id="flipdown" class="flipdown"></div>
+
+  <script>
+    // const date = new Date('2023-08-25T22:59:00.000Z').getTime() / 1e3;
+    const date = Date.now() / 1e3;
+    const flipdown = new FlipDown(date)
+      .start()
+      .ifEnded(() => {
+        document.querySelector('h1').textContent = 'Karina had come!';
+      });
+  </script>
+</body>
+</html>
