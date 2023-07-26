@@ -30,7 +30,7 @@
     h1 {
       padding: 4px;
 
-      font-size: 92px;
+      font-size: min(16vw, 64px);
 
       background: -webkit-linear-gradient(60deg, rgb(188, 12, 241), rgb(212, 4, 4));
       background: linear-gradient(60deg, rgb(188, 12, 241), rgb(212, 4, 4));
@@ -38,6 +38,20 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       text-fill-color: transparent;
+
+      transform: translateY(0);
+      animation: 2s ease-in-out infinite both vibr;
+    }
+
+    /*@keyframes vibr {
+      0% { --y: 0; --s: 1 }
+      50% { --y: 5px; --s: 1.05 }
+      100% { --y: 0; --s: 1 }
+    }*/
+    @keyframes vibr {
+      0% { transform: translateY(0) }
+      50% { transform: translateY(5px) }
+      100% { transform: translateY(0) }
     }
   </style>
 </head>
@@ -46,13 +60,20 @@
   <div id="flipdown" class="flipdown"></div>
 
   <script>
-    // const date = new Date('2023-08-25T22:59:00.000Z').getTime() / 1e3;
-    const date = Date.now() / 1e3;
+    const $h1 = document.querySelector('h1')
+    const date = new Date('2023-08-25T22:59:00.000Z').getTime() / 1e3;
+    // const date = Date.now() / 1e3;
     const flipdown = new FlipDown(date)
       .start()
-      .ifEnded(() => {
-        document.querySelector('h1').textContent = 'Karina had come!';
-      });
+      .ifEnded(() => {$h1.textContent = 'Karina had come!'});
+
+    // function animate () {
+    //   $h1.style.setProperty('--r', `${ Math.random() * 2 - 1}deg` );
+    //   $h1.style.setProperty('--x', `${ Math.random() * 2 - 1}px` );
+    //   $h1.style.setProperty('--y', `${ Math.random() * 2 - 1}px` );
+    //   window.requestAnimationFrame(animate);
+    // }
+    // animate();
   </script>
 </body>
 </html>
